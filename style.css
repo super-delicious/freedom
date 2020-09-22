@@ -1,7 +1,7 @@
 html, body {
   margin: 20px;
   padding: 20px;
-  color: burlywood;
+  color: black;
 }
 canvas {
   display: block;
@@ -9,5 +9,6 @@ canvas {
 .center{
   width: 100%;
   height: auto;
-  left: 50%;
+  left: 60%;
+
 }
