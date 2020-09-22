@@ -1,7 +1,12 @@
 html, body {
   margin: 0;
   padding: 0;
+  color: burlywood;
 }
 canvas {
   display: block;
+}
+.center{
+  width: 100%;
+  height: auto;
 }
