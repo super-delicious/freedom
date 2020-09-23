@@ -9,6 +9,7 @@ let y = 5;
 let x = 10;
 let a = 10;
 let b = 10;
+let sketchStarted = false;
 
 function preload() {
   song = loadSound("song.mp3");
@@ -19,87 +20,97 @@ function setup() {
   createCanvas(400, 400);
   angleMode(DEGREES);
   song.play();
+  createButton("start").mousePressed(startSketch);
+
+}
+
+function startSketch(){
   mic = new p5.AudioIn();
   mic.start();
+
+  sketchStarted = true;
 }
 
 function draw() {
+   if (sketchStarted){
+     background(0, 0, 5);
+
+   //mouse press it show up
+     if (bamYes == true) {
+       background(255,255,255);
+       fill(217, 115, 69);
+       circle( 384, 20, 50, 50);
+     }else if (bamYes != true) {
+       background(0,0,5);
+
+     }
 
 
-  background(0, 0, 5);
-
-//mouse press it show up
-  if (bamYes == true) {
-    background(255,255,255);
-    fill(217, 115, 69);
-    circle( 384, 20, 50, 50);
-  }else if (bamYes != true) {
-    background(0,0,5);
-    
-  }
-
-  
-  // draw back mountain
-  fill(149, 156, 163);
-  bezier(a + 30, b + 390, a + 20, a + 379, b + 30, a + 70, a + 210, b + 390, a + 290);
-  bezier(a + 50, b + 410, a + 290, a + 470, b + 170, a + 10, a + 480, b + 430, a + 470);
-  // draw close mountain
-  fill(149, 166, 153);
-  bezier(a + 40, 430, 300, a + 40, 70, 100, a + 410, 400, 80);
-  a -= 2;
+     // draw back mountain
+     fill(149, 156, 163);
+     bezier(a + 30, b + 390, a + 20, a + 379, b + 30, a + 70, a + 210, b + 390, a + 290);
+     bezier(a + 50, b + 410, a + 290, a + 470, b + 170, a + 10, a + 480, b + 430, a + 470);
+     // draw close mountain
+     fill(149, 166, 153);
+     bezier(a + 40, 430, 300, a + 40, 70, 100, a + 410, 400, 80);
+     a -= 2;
 
 
-  if (a <= -200) {
+     if (a <= -200) {
 
-    a = 400;
-  }
+       a = 400;
+     }
 
-  // variable increment
-  //rain 
-  stroke(151, 151, 169);
+     // variable increment
+     //rain
+     stroke(151, 151, 169);
 
-  line(x, y, x, y + 15);
-  line(x + 35, y, x + 36, y + 28);
-  line(x + 15, y, x + 15, y + 60);
-  line(x + 40, y, x + 38, y + 29);
-  line(x + 50, y, x + 50, y + 40);
-  line(x + 70, y, x + 70, y + 15);
-  line(x + 88, y, x + 89, y + 12);
-  line(x + 99, y, x + 100, y + 17);
-  line(x + 105, y, x + 106, y + 19);
-  line(x + 106, y, x + 107, y + 17);
-  line(x + 110, y, x + 109, y + 33);
-  line(x + 130, y, x + 130, y + 17);
-  line(x + 150, y, x + 149, y + 51);
-  line(x + 170, y, x + 169, y + 17);
-  line(x + 195, y, x + 195, y + 57);
-  line(x + 222, y, x + 225, y + 17);
-  line(x + 235, y, x + 236, y + 77);
-  line(x + 250, y, x + 248, y + 27);
-
-
-  y += 4;
-  x += 2;
+     line(x, y, x, y + 15);
+     line(x + 35, y, x + 36, y + 28);
+     line(x + 15, y, x + 15, y + 60);
+     line(x + 40, y, x + 38, y + 29);
+     line(x + 50, y, x + 50, y + 40);
+     line(x + 70, y, x + 70, y + 15);
+     line(x + 88, y, x + 89, y + 12);
+     line(x + 99, y, x + 100, y + 17);
+     line(x + 105, y, x + 106, y + 19);
+     line(x + 106, y, x + 107, y + 17);
+     line(x + 110, y, x + 109, y + 33);
+     line(x + 130, y, x + 130, y + 17);
+     line(x + 150, y, x + 149, y + 51);
+     line(x + 170, y, x + 169, y + 17);
+     line(x + 195, y, x + 195, y + 57);
+     line(x + 222, y, x + 225, y + 17);
+     line(x + 235, y, x + 236, y + 77);
+     line(x + 250, y, x + 248, y + 27);
 
 
-  if (x > height) {
+     y += 4;
+     x += 2;
 
-    x = 0;
 
-  }
+     if (x > height) {
 
-  if (y > height) {
+       x = 0;
 
-    y = (-200, -100);
-  }
+     }
 
-  // console.log("mic level " + mic.getLevel());
-  // micLevel = mic.getLevel(0.9);
-  angleWing = map(mic.getLevel(), 0, 2, 10, 350);
-  angleBody = map(mic.getLevel(), 0, 5, 10, 350);
-  noStroke();
-  drawBody(angleBody);
-  drawWing(angleWing); // parameter = angle rotation
+     if (y > height) {
+
+       y = (-200, -100);
+     }
+
+     // console.log("mic level " + mic.getLevel());
+     // micLevel = mic.getLevel(0.9);
+     angleWing = map(mic.getLevel(), 0, 2, 10, 350);
+     angleBody = map(mic.getLevel(), 0, 5, 10, 350);
+     noStroke();
+     drawBody(angleBody);
+     drawWing(angleWing); // parameter = angle rotation
+
+   }
+
+
 }
 
 
@@ -183,6 +194,3 @@ function drawWing(angle) {
   endShape(CLOSE);
   push();
 }
-
-
-
