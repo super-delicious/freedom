@@ -1,14 +1,16 @@
 html, body {
-
+  margin-top: 40px
+  margin-left: 50%;
   background-color: black;
 }
 canvas {
   display: block;
 }
-.center{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+
+  .center{
+margin:auto;
+width:600px;
+}
 
 
 }
