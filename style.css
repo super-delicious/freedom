@@ -8,11 +8,11 @@ canvas {
 
 .center{
   border-collapse: collapse;
-   border-spacing: 0;
-   width: 100%;
-   border: 1px solid #ddd;
-width:600px;
-height: auto;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  width:600px;
+  height: auto;
 }
 
 
